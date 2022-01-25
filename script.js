@@ -1,5 +1,5 @@
-function Calc(operator, a, b) {
-    const isNotValid = (operator === undefined) || (typeof a !== 'number') || (typeof b !== 'number')
+function Calc(operation, a, b) {
+    const isNotValid = (typeof a !== 'number') || (typeof b !== 'number')
     const operations = {
         sub: a - b,
         sum: a + b,
@@ -8,13 +8,10 @@ function Calc(operator, a, b) {
     }
     if (isNotValid) {
         return 'Error'
+    } else if (operations[operation]) {
+        return operations[operation]
     }
-    for (let key in operations) {
-        if (key === operator) {
-            return operations[operator]
-        }
-    }
-    return 'Unknown operator'
+    return 'Unknown operation'
 }
 
 console.log(Calc('div', 3, 5))
